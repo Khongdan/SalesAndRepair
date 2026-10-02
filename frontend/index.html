@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="theme-color" content="#0f1115" />
+    <title>Sales & Repair Management</title>
+    <!-- Font chữ: Times New Roman là font có sẵn trên Windows/macOS, nhưng
+         KHÔNG có sẵn trên Linux theo mặc định (font độc quyền Microsoft).
+         Để trình duyệt vẫn hiển thị đúng như Times New Roman trên Linux dù
+         chưa cài font hệ thống, tải thêm "Tinos" — font mã nguồn mở của
+         Google được thiết kế để có kích thước/khoảng cách chữ GIỐNG HỆT
+         Times New Roman (metric-compatible), dùng làm phương án dự phòng
+         trong CSS (xem global.css). Muốn cài Times New Roman thật lên máy
+         Linux, chạy scripts/install-fonts-linux.sh (xem README.md). -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Tinos:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <script>
+      // Set theme ngay khi tải trang (trước khi React chạy) để tránh nhấp nháy (flash) sáng/tối.
+      (function () {
+        try {
+          var saved = localStorage.getItem('srm-theme');
+          var theme = saved === 'light' || saved === 'dark'
+            ? saved
+            : (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+          document.documentElement.setAttribute('data-theme', theme);
+        } catch (e) {}
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
